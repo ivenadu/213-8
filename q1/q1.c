@@ -68,13 +68,18 @@ void test_integer_list(int* vals, int n) {
     foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
 
     // TODO 7: see sort.c and sort.h
+    test_sort();
     // TODO 8: see integer_list.c
 
     printf("Ordered List of Values:\n");
     // TODO 9: use li_sort and then foreach to print sorted list of values
+    il_sort(il);
+    foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
+
 
     // TODO 10: use foreach to compute sum, min, and max of values in list
     sm = 0, mn = 99999999, mx = -1;
+    foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback_1);
     printf ("Stats: sum %d min %d max %d\n", sm, mn, mx);
 
     il_delete(il);

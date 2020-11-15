@@ -9,13 +9,14 @@
 struct il_list {
     // TODO 4
     int size;
-    int pos;
+    int i; 
     int * buf; // int[size]
 };
 
 struct il_iterator {
     // TODO 5
     struct il_list* list;
+    int pos;
 };
 
 
@@ -29,7 +30,8 @@ struct il_iterator {
 
 static int compare(void* datav, int a, int b) {
     // TODO 8
-    return 0; // PLACEHOLDER
+    struct il_list* list = (struct il_list*)datav;
+    return list->buf[a] - list->buf[b];
 }
 
 
@@ -39,6 +41,10 @@ static int compare(void* datav, int a, int b) {
 
 static void swap(void* datav, int a, int b) {
     // TODO 8
+    struct il_list* list = (struct il_list*)datav;
+    int tmp = list->buf[a];
+    list->buf[a] = list->buf[b];
+    list->buf[b] = tmp;
 }
 
 
@@ -55,8 +61,8 @@ struct il_list* il_new(int size) {
     void * buf = malloc(sizeof(int)*size);
     struct il_list* p = (struct il_list*)malloc(sizeof(struct il_list));
     p->buf = buf;
-    p->pos = 0;
     p->size = size;
+    p->i = 0;
     return p;
 }
 
@@ -78,11 +84,11 @@ void il_delete(struct il_list* list) {
 
 void il_add(struct il_list* list, int value) {
     // TODO 4
-    if(list->pos >= list->size){
+    if(list->i >= list->size){
         printf("list full!\n");
         exit(-1);
     }
-    list->buf[list->pos++] = value;
+    list->buf[list->i++] = value;
 }
 
 
@@ -91,7 +97,7 @@ void il_add(struct il_list* list, int value) {
  */
 
 void il_sort(struct il_list* list) {
-    // TODO 8
+    sort(list, list->i, compare, swap);
 }
 
 
@@ -107,7 +113,7 @@ void* il_iterator(void* listv) {
     // TODO 5
     struct il_iterator* it = malloc(sizeof(struct il_iterator));
     it->list = listv;
-    it->list->pos = 0;
+    it->pos = 0;
     return it;
 }
 
@@ -118,7 +124,7 @@ void* il_iterator(void* listv) {
 
 int il_has_next(void* iteratorv) {
     struct il_list* list = ((struct il_iterator*)iteratorv)->list;
-    return list->pos < list->size;
+    return ((struct il_iterator*)iteratorv)->pos < list->i;
 }
 
 
@@ -129,7 +135,7 @@ int il_has_next(void* iteratorv) {
 void* il_get_next(void* iteratorv) {
     // TODO 5
     struct il_list* list = ((struct il_iterator*)iteratorv)->list;
-    return &list->buf[list->pos++];
+    return &list->buf[((struct il_iterator*)iteratorv)->pos++];
 }
 
 
