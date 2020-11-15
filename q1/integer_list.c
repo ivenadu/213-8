@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "integer_list.h"
 #include "sort.h"
 
@@ -7,10 +8,14 @@
 
 struct il_list {
     // TODO 4
+    int size;
+    int pos;
+    int * buf; // int[size]
 };
 
 struct il_iterator {
     // TODO 5
+    struct il_list* list;
 };
 
 
@@ -47,7 +52,12 @@ static void swap(void* datav, int a, int b) {
 
 struct il_list* il_new(int size) {
     // TODO 4
-    return NULL;
+    void * buf = malloc(sizeof(int)*size);
+    struct il_list* p = (struct il_list*)malloc(sizeof(struct il_list));
+    p->buf = buf;
+    p->pos = 0;
+    p->size = size;
+    return p;
 }
 
 
@@ -57,6 +67,8 @@ struct il_list* il_new(int size) {
 
 void il_delete(struct il_list* list) {
     // TODO 4
+    free(list->buf);
+    free(list);
 }
 
 
@@ -66,6 +78,11 @@ void il_delete(struct il_list* list) {
 
 void il_add(struct il_list* list, int value) {
     // TODO 4
+    if(list->pos >= list->size){
+        printf("list full!\n");
+        exit(-1);
+    }
+    list->buf[list->pos++] = value;
 }
 
 
@@ -88,7 +105,10 @@ void il_sort(struct il_list* list) {
 
 void* il_iterator(void* listv) {
     // TODO 5
-    return NULL; // PLACEHOLDER
+    struct il_iterator* it = malloc(sizeof(struct il_iterator));
+    it->list = listv;
+    it->list->pos = 0;
+    return it;
 }
 
 
@@ -97,8 +117,8 @@ void* il_iterator(void* listv) {
  */
 
 int il_has_next(void* iteratorv) {
-    // TODO 5
-    return 0; // PLACEHOLDER
+    struct il_list* list = ((struct il_iterator*)iteratorv)->list;
+    return list->pos < list->size;
 }
 
 
@@ -108,7 +128,8 @@ int il_has_next(void* iteratorv) {
 
 void* il_get_next(void* iteratorv) {
     // TODO 5
-    return NULL; // PLACEHOLDER
+    struct il_list* list = ((struct il_iterator*)iteratorv)->list;
+    return &list->buf[list->pos++];
 }
 
 
@@ -117,4 +138,5 @@ void* il_get_next(void* iteratorv) {
  */
 void il_delete_iterator(void* iterator) {
     // TODO 5
+    free(iterator);
 }

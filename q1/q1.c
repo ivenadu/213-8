@@ -65,6 +65,7 @@ void test_integer_list(int* vals, int n) {
 
     printf("Unordered List of Values:\n");
     // TODO 6: use foreach to print unsorted (i.e., input-order) list of values
+    foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
 
     // TODO 7: see sort.c and sort.h
     // TODO 8: see integer_list.c
