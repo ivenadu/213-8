@@ -15,6 +15,19 @@ void print(void* ipv) {
 
 int sm, mn, mx;
 
+void my_callback(void* element)
+{
+    print(element);
+}
+
+void my_callback_1(void* element)
+{
+    int i = *(int*)element;
+    sm += i;
+    if(i < mn) mn = i;
+    if(i > mx) mx = i;
+}
+
 void test_integer_tree(int* vals, int n) {
     printf("Tree:\n");
     struct it_tree* it = it_new();
@@ -29,13 +42,14 @@ void test_integer_tree(int* vals, int n) {
     //     print(element);
     // }
     // it_delete_iterator(iterator);
-    void* element = it_get_next(it);
-    foreach(it, it_iterator, it_has_next ,it_get_next(it), it_delete_iterator, element);  
+    //void* element = it_get_next(it);
+    foreach(it, it_iterator, it_has_next ,it_get_next, it_delete_iterator, my_callback);
 
     // TODO 2: see foreach.c
 
     // TODO 3: use foreach to compute sum, min, and max of values in tree
     sm = 0, mn = 99999999, mx = -1;
+    foreach(it, it_iterator, it_has_next ,it_get_next, it_delete_iterator, my_callback_1);
     printf ("Stats: sum %d min %d max %d\n", sm, mn, mx);
 
     it_delete(it);

@@ -17,4 +17,11 @@ void foreach(
     void  (*callback)        (void* element)
 ) {
     // TODO 2: Implement and test with TODO 1 in q1.c
+    void* it = iterator(collection);
+    while (has_next(it))
+    {
+        callback(get_next(it));
+    }
+    
+    delete_iterator(it);
 }
