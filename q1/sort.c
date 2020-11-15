@@ -2,12 +2,6 @@
 #include <string.h>
 #include "sort.h"
 
-// TODO 7: Change this procedure sort generic arrays (i.e., arrays of any type)
-//         by replacing char** with void* and adding function pointer parameters.
-//         Update test_sort to use the new sort to sort
-//             (a) this arrays of strings; AND
-//             (b) an array of integers (this will help you with TODO 9)
-//         See also TODO 8 in sort.h
 void sort(
     void *list,
     int length,
@@ -20,27 +14,31 @@ void sort(
                 swap(list, i, j);
 }
 
-int str_swap(char *list[], int i, int j)
+void str_swap(void *datav, int i, int j)
 {
+    char ** list = (char**)datav; 
     char *tmp = list[i];
     list[i] = list[j];
     list[j] = tmp;
 }
 
-int str_compare(char *list[], int i, int j)
+int str_compare(void *datav, int i, int j)
 {
+    char ** list = (char**)datav; 
     return strcmp(list[i], list[j]);
 }
 
-int int_swap(int *list, int i, int j)
+void int_swap(void *datav, int i, int j)
 {
+    int * list = (int*)datav;
     int tmp = list[i];
     list[i] = list[j];
     list[j] = tmp;
 }
 
-int int_compare(int *list, int i, int j)
+int int_compare(void *datav, int i, int j)
 {
+    int * list = (int*)datav;
     return list[i] - list[j];
 }
 void test_sort()

@@ -16,7 +16,6 @@ void foreach(
     void  (*delete_iterator) (void* iterator),
     void  (*callback)        (void* element)
 ) {
-    // TODO 2: Implement and test with TODO 1 in q1.c
     void* it = iterator(collection);
     while (has_next(it))
     {

@@ -7,14 +7,12 @@
 /*** Types ***/
 
 struct il_list {
-    // TODO 4
     int size;
     int i; 
     int * buf; // int[size]
 };
 
 struct il_iterator {
-    // TODO 5
     struct il_list* list;
     int pos;
 };
@@ -143,6 +141,5 @@ void* il_get_next(void* iteratorv) {
  * Delete iterator
  */
 void il_delete_iterator(void* iterator) {
-    // TODO 5
     free(iterator);
 }

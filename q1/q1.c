@@ -3,6 +3,7 @@
 #include "foreach.h"
 #include "integer_list.h"
 #include "integer_tree.h"
+#include "sort.h"
 
 /**
  * CPSC 213 Assignment 8, Question 1 Test Harness
@@ -35,19 +36,8 @@ void test_integer_tree(int* vals, int n) {
         it_add(it, vals [i]);
 
     printf("Order List of Values:\n");
-    // TODO 1: Replace next 6 lines with call to foreach
-    // struct it_iterator* iterator = it_iterator (it);
-    // while (it_has_next(iterator)) {
-    //     void* element = it_get_next(iterator);
-    //     print(element);
-    // }
-    // it_delete_iterator(iterator);
-    //void* element = it_get_next(it);
     foreach(it, it_iterator, it_has_next ,it_get_next, it_delete_iterator, my_callback);
 
-    // TODO 2: see foreach.c
-
-    // TODO 3: use foreach to compute sum, min, and max of values in tree
     sm = 0, mn = 99999999, mx = -1;
     foreach(it, it_iterator, it_has_next ,it_get_next, it_delete_iterator, my_callback_1);
     printf ("Stats: sum %d min %d max %d\n", sm, mn, mx);
@@ -61,23 +51,16 @@ void test_integer_list(int* vals, int n) {
     for (int i = 0; i < n; i++)
         il_add(il, vals [i]);
 
-    // TODO 4 and 5: see integer_list.c
-
     printf("Unordered List of Values:\n");
-    // TODO 6: use foreach to print unsorted (i.e., input-order) list of values
     foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
 
-    // TODO 7: see sort.c and sort.h
     test_sort();
-    // TODO 8: see integer_list.c
 
     printf("Ordered List of Values:\n");
-    // TODO 9: use li_sort and then foreach to print sorted list of values
     il_sort(il);
     foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
 
 
-    // TODO 10: use foreach to compute sum, min, and max of values in list
     sm = 0, mn = 99999999, mx = -1;
     foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback_1);
     printf ("Stats: sum %d min %d max %d\n", sm, mn, mx);
