@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
         node = new_StringNode(argv[i]);
       else if (strcmp(argv[1], "r") == 0)
         // TODO stub
-        node = NULL; 
+        node = new_ReverseStringNode(argv[i]);
       else if (strcmp(argv[1], "l") == 0)
         // TODO stub
         node = NULL; 
