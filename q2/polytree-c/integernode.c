@@ -3,16 +3,16 @@
 #include "node.h"
 #include "integernode.h"
 
-int int_compare(void* thisv, void* nodev){
+int IntegerNode_compare(void* thisv, void* nodev){
     return ((struct IntegerNode*)thisv)->i - ((struct IntegerNode*)nodev)->i;
 }
-void int_printNode (void* thisv){
+void IntegerNode_printNode (void* thisv){
     printf("%d\n", ((struct IntegerNode*)thisv)->i);
 }
 
-struct Node_class IntegerNode_class_table = {
-  int_compare,
-  int_printNode,
+struct IntegerNode_class IntegerNode_class_table = {
+  IntegerNode_compare,
+  IntegerNode_printNode,
   Node_insert,
   Node_print,
   Node_delete

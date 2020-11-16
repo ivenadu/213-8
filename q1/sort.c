@@ -36,7 +36,7 @@ void int_swap(void *datav, int i, int j)
     list[j] = tmp;
 }
 
-int int_compare(void *datav, int i, int j)
+int IntegerNode_compare(void *datav, int i, int j)
 {
     int * list = (int*)datav;
     return list[i] - list[j];
@@ -52,7 +52,7 @@ void test_sort()
 
     { 
         int list[] = {100, 2, 1, 20, -3, 88 };
-        sort(list, 6, int_compare, int_swap);
+        sort(list, 6, IntegerNode_compare, int_swap);
         for (int i = 0; i < 6; i++)
             printf("%d\n", list[i]);
     }

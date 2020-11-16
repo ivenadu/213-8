@@ -5,15 +5,15 @@
 #include "stringnode.h"
 #include "loggingstringnode.h"
 
-void my_insert(void* thisv, void* nodev) {
+void LoggingStringNode_insert(void* thisv, void* nodev) {
     printf("insert %s\n", ((struct LoggingStringNode*) nodev)->s);
     Node_insert(thisv, nodev);
 }
 
-struct StringNode_class LoggingStringNode_class_table = {
+struct LoggingStringNode_class LoggingStringNode_class_table = {
   StringNode_compareTo,
   StringNode_printNode,
-  my_insert,
+  LoggingStringNode_insert,
   Node_print,
   Node_delete
 };

@@ -2,8 +2,15 @@
 #define __INTEGERNODE_H__
 
 // TODO
+struct IntegerNode_class {
+  int  (*compareTo) (void*, void*);
+  void (*printNode) (void*);
+  void (*insert)    (void*, void*);
+  void (*print)     (void*);
+  void (*delete)    (void*);
+};
 struct IntegerNode {
-  struct Node_class* class;
+  struct IntegerNode_class* class;
 
   struct IntegerNode* left;
   struct IntgerNode* right;

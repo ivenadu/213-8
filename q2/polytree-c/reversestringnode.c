@@ -5,7 +5,6 @@
 #include "reversestringnode.h"
 
 struct ReverseStringNode_class ReverseStringNode_class_table = {
-  // TODO initialization of class table
   ReverseStringNode_compareTo,
   StringNode_printNode,
   Node_insert,
@@ -13,7 +12,6 @@ struct ReverseStringNode_class ReverseStringNode_class_table = {
   Node_delete
 };
 
-// TODO implementation of method(s) that ReverseStringNode overrides
 
 int ReverseStringNode_compareTo(void* thisv, void* nodev) {
   struct StringNode* this = thisv;
