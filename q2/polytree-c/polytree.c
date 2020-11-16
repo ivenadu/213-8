@@ -40,6 +40,7 @@ int main(int argc, char** argv) {
         printf("sum = %d\n", sum(tree));
       }
       // TODO node->delete()
+      Node_delete(tree);
     }
   }
 }

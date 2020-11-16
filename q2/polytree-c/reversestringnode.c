@@ -10,6 +10,7 @@ struct ReverseStringNode_class ReverseStringNode_class_table = {
   StringNode_printNode,
   Node_insert,
   Node_print,
+  Node_delete
 };
 
 // TODO implementation of method(s) that ReverseStringNode overrides

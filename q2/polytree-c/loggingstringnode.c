@@ -17,6 +17,7 @@ struct StringNode_class LoggingStringNode_class_table = {
   //my_insert,
   my_insert,
   Node_print,
+  Node_delete
 };
 
 void * new_LoggingStringNode(void *s){

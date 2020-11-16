@@ -15,6 +15,7 @@ struct Node_class IntegerNode_class_table = {
   int_printNode,
   Node_insert,
   Node_print,
+  Node_delete
 };
 
 
