@@ -13,15 +13,12 @@ int main(int argc, char** argv) {
     for (int i=2; i< argc; i++) {
       struct Node* node = NULL;
       if (strcmp(argv[1], "i") == 0)
-        // TODO stub
         node = new_IntegerNode(atoi(argv[i])); 
       else if (strcmp(argv[1], "s") == 0)
         node = new_StringNode(argv[i]);
       else if (strcmp(argv[1], "r") == 0)
-        // TODO stub
         node = new_ReverseStringNode(argv[i]);
       else if (strcmp(argv[1], "l") == 0)
-        // TODO stub
         node = new_LoggingStringNode(argv[i]);
 
       
@@ -37,9 +34,8 @@ int main(int argc, char** argv) {
     if (tree != NULL) {
       tree->class->print(tree);
       if (strcmp(argv[1], "i") == 0) {
-        printf("sum = %d\n", sum(tree));
+        printf("sum = %lld\n", IntegerNode_sum(tree));
       }
-      // TODO node->delete()
       Node_delete(tree);
     }
   }

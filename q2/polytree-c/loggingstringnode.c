@@ -5,7 +5,6 @@
 #include "stringnode.h"
 #include "loggingstringnode.h"
 
-// TODO
 void my_insert(void* thisv, void* nodev) {
     printf("insert %s\n", ((struct LoggingStringNode*) nodev)->s);
     Node_insert(thisv, nodev);
@@ -14,7 +13,6 @@ void my_insert(void* thisv, void* nodev) {
 struct StringNode_class LoggingStringNode_class_table = {
   StringNode_compareTo,
   StringNode_printNode,
-  //my_insert,
   my_insert,
   Node_print,
   Node_delete

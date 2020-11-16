@@ -2,20 +2,14 @@
 #include <stdio.h>
 #include "node.h"
 
-/**
- * declaration and initialzation of class table
- */
 struct Node_class Node_class_table = {
-  NULL,  /* abstract compareTo */
-  NULL,  /* abstract printNode* */
+  NULL,
+  NULL,
   Node_insert,
   Node_print,
   Node_delete
 };
 
-/**
- * constructor
- */
 void Node_ctor(void* thisv) {
   struct Node* this = thisv;
   this->left = NULL;
@@ -30,9 +24,6 @@ void Node_delete(void* thisv){
   free(node);
 }
 
-/**
- * insert
- */
 void Node_insert(void* thisv, void* nodev) {
   struct Node* this = thisv;
   struct Node* node = nodev;
@@ -50,9 +41,6 @@ void Node_insert(void* thisv, void* nodev) {
   }
 }
 
-/**
- * print
- */
 void Node_print(void* thisv) {
   struct Node* this = thisv;
   if (this->left != NULL)

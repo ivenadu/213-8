@@ -28,13 +28,13 @@ void* new_IntegerNode(int v){
     return p;
 }
 
-int sum(void * thisv){
+long long IntegerNode_sum(void * thisv){
    struct IntegerNode* node = thisv;
-   int s = node->i;
+   long long s = node->i;
     if (node->left != NULL)
-      s += sum(node->left);
+      s += IntegerNode_sum(node->left);
     if (node->right != NULL)
-      s += sum(node->right);
+      s += IntegerNode_sum(node->right);
 
     return s;
 }
