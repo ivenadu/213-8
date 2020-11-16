@@ -54,7 +54,7 @@ void test_integer_list(int* vals, int n) {
     printf("Unordered List of Values:\n");
     foreach(il, il_iterator, il_has_next ,il_get_next, il_delete_iterator, my_callback);
 
-    test_sort();
+    //test_sort();
 
     printf("Ordered List of Values:\n");
     il_sort(il);

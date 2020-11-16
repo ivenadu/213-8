@@ -50,7 +50,7 @@ void test_sort()
             printf("%s\n", list[i]);
     }
 
-    {
+    { 
         int list[] = {100, 2, 1, 20, -3, 88 };
         sort(list, 6, int_compare, int_swap);
         for (int i = 0; i < 6; i++)
