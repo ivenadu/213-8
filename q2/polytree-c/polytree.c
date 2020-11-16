@@ -14,8 +14,7 @@ int main(int argc, char** argv) {
       struct Node* node = NULL;
       if (strcmp(argv[1], "i") == 0)
         // TODO stub
-        // note that integer value of argument atoi(argv[i])
-        node = NULL; 
+        node = new_IntegerNode(atoi(argv[i])); 
       else if (strcmp(argv[1], "s") == 0)
         node = new_StringNode(argv[i]);
       else if (strcmp(argv[1], "r") == 0)
@@ -38,7 +37,7 @@ int main(int argc, char** argv) {
     if (tree != NULL) {
       tree->class->print(tree);
       if (strcmp(argv[1], "i") == 0) {
-        // TODO print sum
+        printf("sum = %d\n", sum(tree));
       }
       // TODO node->delete()
     }
