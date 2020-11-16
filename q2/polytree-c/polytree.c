@@ -23,14 +23,18 @@ int main(int argc, char** argv) {
         node = new_ReverseStringNode(argv[i]);
       else if (strcmp(argv[1], "l") == 0)
         // TODO stub
-        node = NULL; 
+        node = new_LoggingStringNode(argv[i]);
+
+      
       if (node != NULL) {
         if (tree == NULL)
           tree = node;
-        else
+        else 
           tree->class->insert(tree, node);
       }
     }
+
+
     if (tree != NULL) {
       tree->class->print(tree);
       if (strcmp(argv[1], "i") == 0) {
