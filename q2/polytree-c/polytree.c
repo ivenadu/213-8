@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     if (tree != NULL) {
       tree->class->print(tree);
       if (strcmp(argv[1], "i") == 0) {
-        printf("sum = %lld\n", IntegerNode_sum(tree));
+        printf("sum = %d\n", IntegerNode_sum(tree));
       }
       Node_delete(tree);
     }

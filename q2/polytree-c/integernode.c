@@ -15,7 +15,8 @@ struct IntegerNode_class IntegerNode_class_table = {
   IntegerNode_printNode,
   Node_insert,
   Node_print,
-  Node_delete
+  Node_delete,
+  IntegerNode_sum
 };
 
 
@@ -28,9 +29,9 @@ void* new_IntegerNode(int v){
     return p;
 }
 
-long long IntegerNode_sum(void * thisv){
+int IntegerNode_sum(void * thisv){
    struct IntegerNode* node = thisv;
-   long long s = node->i;
+   int s = node->i;
     if (node->left != NULL)
       s += IntegerNode_sum(node->left);
     if (node->right != NULL)
@@ -38,4 +39,3 @@ long long IntegerNode_sum(void * thisv){
 
     return s;
 }
-// TODO 

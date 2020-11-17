@@ -8,6 +8,7 @@ struct IntegerNode_class {
   void (*insert)    (void*, void*);
   void (*print)     (void*);
   void (*delete)    (void*);
+  int (*sum)        (void*);
 };
 struct IntegerNode {
   struct IntegerNode_class* class;
@@ -20,6 +21,6 @@ struct IntegerNode {
 
 void* new_IntegerNode(int v);
 
-long long IntegerNode_sum(void *thisv);
+int IntegerNode_sum(void *thisv);
 
 #endif /*__INTEGERNODE_H__*/

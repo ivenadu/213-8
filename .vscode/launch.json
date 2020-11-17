@@ -9,7 +9,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/q2/polytree-c/polytree",
-            "args": ["l", "c", "a", "b"],
+            "args": ["i", "-1", "-2", "-3"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/q2/polytree-c",
             "environment": [],
